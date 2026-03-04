@@ -22,20 +22,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Initialize CodeQL for Python (and optionally actions)
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
-          languages: ['python', 'actions'] # actions is optional, for workflow YAML
+          languages: ['python']  # only Python
+          # optionally include 'actions' if you want to scan workflows:
+          # languages: ['python', 'actions']
 
-      # Optional: build steps if needed (for Python usually none)
-      - name: Run manual build steps
-        if: false  # Python doesn't require build usually
-        shell: bash
-        run: |
-          echo "Add any manual build commands here if required"
-          exit 1
-
-      # Run CodeQL analysis
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
