@@ -22,12 +22,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
-          languages: ['python']  # only Python
-          # optionally include 'actions' if you want to scan workflows:
-          # languages: ['python', 'actions']
+          languages: python    # only Python
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
